@@ -23,12 +23,12 @@ View Student
 
 
 **Subject Management**
-Add Subject
+Add Subject,
 View Subject
 
 
 **Class Management**
-Add Class
+Add Class,
 View Class
 
 
