@@ -61,10 +61,9 @@ Exam Report
 
 # SYSTEM SPECIFICATIONS
 **HARDWARE REQUIREMENTS**
-PROCESSOR: INTEL CORE I3
-RAM: 4GB
-HDD: 1TB
-MONITOR: 15” COLOR MONITOR
+PROCESSOR: Ryzen 5 5500U
+RAM: 8GB
+SSD: 512GB
 
 
 **SOFTWARE REQUIREMENTS**
@@ -91,9 +90,11 @@ Import the provided SQL file. The file is known as exam_hall.sql located inside 
 Browse the Examination Hall System in a browser. i.e. http://localhost/ehms-full-source-code/.
 Note: To log in as a Student or Teacher, please browse the following.
 
-For Adminsitration: http://localhost/ehms-full-source-code/Source Code/login.php
-For Students: http://localhost/ehms-full-source-code/student.php
-For Teachers: http://localhost/ehms-full-source-code/teacher.php
+#Just give the full path of your project directory
+
+For Adminsitration: http://localhost/ehms-full-source-code/login.php  #For example
+For Students: http://localhost/ehms-full-source-code/student.php  #For example
+For Teachers: http://localhost/ehms-full-source-code/teacher.php  #For example
 
 
 **Admin Access Information:**
