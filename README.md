@@ -93,7 +93,9 @@ Note: To log in as a Student or Teacher, please browse the following.
 #Just give the full path of your project directory
 
 For Adminsitration: http://localhost/ehms-full-source-code/login.php  #For example
+
 For Students: http://localhost/ehms-full-source-code/student.php  #For example
+
 For Teachers: http://localhost/ehms-full-source-code/teacher.php  #For example
 
 
