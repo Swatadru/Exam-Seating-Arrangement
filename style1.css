@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins','sans-serif';
+}
+
+
+
+header h4{
+    position: absolute;
+    left: 10%;
+    bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+/* Splash Screen */
+
+.logo-header{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #ffffff
+}
+
+.intro{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width:100%;
+    height: 100%;
+    background-color: #161616;
+    transition: top 0.5s ease;
+}
+
+.logo{
+    position: relative;
+    display: inline-block;
+    bottom: -20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.logo.active{
+    bottom: 0;
+    opacity: 1;
+    transform: ease-in-out 0.5s;
+}
+
+.logo.fade{
+    bottom: 150px;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+}
