@@ -13,12 +13,12 @@ Dashboard
 
 
 **Teacher Management**
-Add Teacher
+Add Teacher,
 View Teacher
 
 
 **Student Management**
-Add Student
+Add Student,
 View Student
 
 
@@ -45,7 +45,7 @@ View Allotment
 
 USERS
 **User Management**
-User Permissions
+User Permissions,
 Settings
 
 
@@ -55,7 +55,7 @@ Settings
 **Email Management**
 
 **Report Management**
-Today's Exam
+Today's Exam,
 Exam Report
 
 
