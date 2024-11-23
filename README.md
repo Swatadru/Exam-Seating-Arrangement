@@ -127,9 +127,11 @@ Password: 123
 
 ![Screenshot 2024-11-20 230919](https://github.com/user-attachments/assets/732161b6-2f33-4674-b295-cd30157b3338)
 
+
 **Admin Dashboard**
 
 ![Screenshot 2024-11-20 230950](https://github.com/user-attachments/assets/2969eb92-e49a-4a60-89c2-98d9584a4459)
+
 
 **Student Dashboard**    #Teacher Dashboard looks similar
 
