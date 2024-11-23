@@ -1,5 +1,4 @@
 # Exam-Seating-Arrangement
-# **Exam_Seating_Arrangement_System**
 
 The Examination Seating Arrangement System is a PHP project that can automate the process of exam allotment and seating arrangement. 
 The system was developed using the following languages: PHP, HTML, CSS, JavaScript, MySQLi, and jQuery.
