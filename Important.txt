@@ -1,0 +1,14 @@
+                                               **How To Login Admin Panel** 
+
+                                              User: swatadrupaul@gmail.com
+                                              Password: admin
+
+                                              **How To Login Student Panel** 
+
+                                              User: swatadrupaul@gmail.com
+                                              Password: 123     
+       
+                                               **How To Login Teacher Panel** 
+
+                                              User: saheb@gmail.com / sahebpaul@gmail.com
+                                              Password: 123
