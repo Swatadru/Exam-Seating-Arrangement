@@ -90,7 +90,7 @@ Import the provided SQL file. The file is known as exam_hall.sql located inside 
 Browse the Examination Hall System in a browser. i.e. http://localhost/Exam-Seating-Arrangement/.
 Note: To log in as a Student or Teacher, please browse the following.
 
-#Just give the full path of your project directory including localhost at the beginning at your browser
+**#Just give the full path of your project directory including localhost at the beginning at your browser**
 
 For Adminsitration: http://localhost/Exam-Seating-Arrangement/login.php  #For example
 
