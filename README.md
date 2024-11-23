@@ -102,6 +102,7 @@ For Teachers: http://localhost/Exam-Seating-Arrangement/teacher.php  #For exampl
 # ADMIN ACCESS INFORMATION
 
 Email: swatadrupaul@gmail.com
+
 Password: admin
 
 
@@ -109,6 +110,7 @@ Password: admin
 # STUDENT ACCESS INFORMATION
 
 Email: swatadrupaul@gmail.com
+
 Password: 123
 
 
@@ -116,4 +118,5 @@ Password: 123
 # TEACHER ACCESS INFORMATION
 
 Email: saheb@gmail.com / sahebpaul@gmail.com
+
 Password: 123
