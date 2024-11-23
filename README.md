@@ -123,8 +123,14 @@ Password: 123
 
 # **Demo Sample of Website**
 
+**Login Page of admin**
+
 ![Screenshot 2024-11-20 230919](https://github.com/user-attachments/assets/732161b6-2f33-4674-b295-cd30157b3338)
 
+**Admin Dashboard**
 
 ![Screenshot 2024-11-20 230950](https://github.com/user-attachments/assets/2969eb92-e49a-4a60-89c2-98d9584a4459)
 
+**Student Dashboard**    #Teacher Dashboard looks similar
+
+![Screenshot 2024-11-20 231028](https://github.com/user-attachments/assets/fbec0502-78ca-4aeb-bf84-d919ff059716)
