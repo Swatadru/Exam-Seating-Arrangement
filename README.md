@@ -33,13 +33,13 @@ View Class
 
 
 **Exam Management**
-Add Room Type
-View Room Type
-Add Room
-View Room
-Add Exam
-View Exam
-Add Allotment
+Add Room Type,
+View Room Type,
+Add Room,
+View Room,
+Add Exam,
+View Exam,
+Add Allotment,
 View Allotment
 
 
