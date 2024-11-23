@@ -88,12 +88,12 @@ If you are using XAMPP, copy the extracted source code folder and paste it into 
 Browse the PHPMyAdmin in a browser. i.e. http://localhost/phpmyadmin
 Create a new database naming exam_hall.
 Import the provided SQL file. The file is known as exam_hall.sql located inside the DB folder.
-Browse the Examination Hall System in a browser. i.e. http://localhost/ehms-full-source-code/Source Code/.
+Browse the Examination Hall System in a browser. i.e. http://localhost/ehms-full-source-code/.
 Note: To log in as a Student or Teacher, please browse the following.
 
 For Adminsitration: http://localhost/ehms-full-source-code/Source Code/login.php
-For Students: http://localhost/ehms-full-source-code/Source Code/student.php
-For Teachers: http://localhost/ehms-full-source-code/Source Code/teacher.php
+For Students: http://localhost/ehms-full-source-code/student.php
+For Teachers: http://localhost/ehms-full-source-code/teacher.php
 
 
 **Admin Access Information:**
