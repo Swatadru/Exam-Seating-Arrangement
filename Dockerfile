@@ -1,10 +1,10 @@
 # Use official PHP image with Apache
 FROM php:8.1-apache
 
-# Install Extensions (mysqli for legacy, pdo_sqlite for new portable architecture)
+# Install Extensions (pdo_sqlite for the portable architecture)
 RUN apt-get update && apt-get install -y libsqlite3-dev \
-    && docker-php-ext-install mysqli pdo_sqlite \
-    && docker-php-ext-enable mysqli pdo_sqlite
+    && docker-php-ext-install pdo_sqlite \
+    && docker-php-ext-enable pdo_sqlite
 
 # Update ports.conf to handle custom PORT if provided by Render
 # (Though Render defaults to 80 for Docker, this is good practice)
