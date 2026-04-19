@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: exam-hall-app
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    healthCheckPath: /index.php
+    envVars:
+      - key: IS_CLOUD
+        value: "true"
+      - key: RENDER
+        value: "true"
