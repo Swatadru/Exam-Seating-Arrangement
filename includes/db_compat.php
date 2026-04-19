@@ -115,49 +115,64 @@ class SQLiteStatement {
 }
 
 // Procedural wrappers
-function mysqli_fetch_array($result) {
-    if ($result instanceof SQLiteResult) {
-        return $result->fetch_array();
+if (!function_exists('mysqli_fetch_array')) {
+    function mysqli_fetch_array($result) {
+        if ($result instanceof SQLiteResult) {
+            return $result->fetch_array();
+        }
+        return null;
     }
-    return null;
 }
 
-function mysqli_fetch_assoc($result) {
-    if ($result instanceof SQLiteResult) {
-        return $result->fetch_assoc();
+if (!function_exists('mysqli_fetch_assoc')) {
+    function mysqli_fetch_assoc($result) {
+        if ($result instanceof SQLiteResult) {
+            return $result->fetch_assoc();
+        }
+        return null;
     }
-    return null;
 }
 
-function mysqli_insert_id($conn) {
-    if ($conn instanceof SQLitePDO) {
-        return $conn->lastInsertId();
+if (!function_exists('mysqli_insert_id')) {
+    function mysqli_insert_id($conn) {
+        if ($conn instanceof SQLitePDO) {
+            return $conn->lastInsertId();
+        }
+        return 0;
     }
-    return 0;
 }
 
-function mysqli_real_escape_string($conn, $string) {
-    return str_replace("'", "''", $string);
+if (!function_exists('mysqli_real_escape_string')) {
+    function mysqli_real_escape_string($conn, $string) {
+        return str_replace("'", "''", $string);
+    }
 }
 
-function mysqli_error($conn) {
-    if ($conn instanceof SQLitePDO) {
-        return $conn->error;
+if (!function_exists('mysqli_error')) {
+    function mysqli_error($conn) {
+        if ($conn instanceof SQLitePDO) {
+            return $conn->error;
+        }
+        return "";
     }
-    return "";
 }
 
-function mysqli_num_rows($result) {
-    if ($result instanceof SQLiteResult) {
-        return $result->num_rows;
+if (!function_exists('mysqli_num_rows')) {
+    function mysqli_num_rows($result) {
+        if ($result instanceof SQLiteResult) {
+            return $result->num_rows;
+        }
+        return 0;
     }
-    return 0;
 }
 
-function mysqli_query($conn, $sql) {
-    if ($conn instanceof SQLitePDO) {
-        return $conn->query($sql);
+if (!function_exists('mysqli_query')) {
+    function mysqli_query($conn, $sql) {
+        if ($conn instanceof SQLitePDO) {
+            return $conn->query($sql);
+        }
+        return false;
     }
-    return false;
 }
+
 
