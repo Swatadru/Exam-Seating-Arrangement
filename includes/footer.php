@@ -22,8 +22,8 @@
 
 <script src="../assets/js/lib/sweetalert/sweetalert.init.js"></script>
 
-<script src="../assets/js/lib/weather/jquery.simpleWeather.min.js"></script>
-<script src="../assets/js/lib/weather/weather-init.js"></script>
+<!-- <script src="../assets/js/lib/weather/jquery.simpleWeather.min.js"></script>
+<script src="../assets/js/lib/weather/weather-init.js"></script> -->
 <script src="../assets/js/lib/owl-carousel/owl.carousel.min.js"></script>
 <script src="../assets/js/lib/owl-carousel/owl.carousel-init.js"></script>
 
