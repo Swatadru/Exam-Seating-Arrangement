@@ -11,3 +11,7 @@ services:
         value: "true"
       - key: RENDER
         value: "true"
+    disk:
+      name: sqlite-data
+      mountPath: /var/www/html/data
+      sizeGB: 1

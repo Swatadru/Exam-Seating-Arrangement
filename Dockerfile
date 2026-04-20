@@ -20,12 +20,17 @@ COPY . /var/www/html/
 # Set working directory
 WORKDIR /var/www/html/
 
+# Create data directory for persistent SQLite storage
+RUN mkdir -p /var/www/html/data
+
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Fix permissions for the web server
-RUN chown -R www-data:www-data /var/www/html/ && chmod -R 755 /var/www/html/
+# Fix permissions for the web server and the data volume
+RUN chown -R www-data:www-data /var/www/html/ && chmod -R 775 /var/www/html/
 
 # Expose port (Render dynamic port)
+# We set a default PORT to 80 but Render will override this at runtime
+ENV PORT=80
 EXPOSE 80
 
