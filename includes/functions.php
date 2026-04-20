@@ -63,4 +63,4 @@ if (!function_exists('verifyCSRFToken')) {
         return true;
     }
 }
-?>
+
