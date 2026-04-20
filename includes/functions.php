@@ -28,18 +28,19 @@ if (!function_exists('hashPassword')) {
 
 if (!function_exists('checkLogin')) {
     function checkLogin($type = 'admin') {
-        if ($type == 'admin' && !isset($_SESSION["email"])) {
-            $redirect = WEB_ROOT . "admin/login.php";
-            echo "<script>window.location.href = '$redirect';</script>";
-            exit();
+        $is_logged_in = false;
+        $redirect = "";
+
+        if ($type == 'admin' && (isset($_SESSION["email"]) || isset($_SESSION["id"]))) {
+            $is_logged_in = true;
+        } elseif ($type == 'student' && (isset($_SESSION["semail"]) || isset($_SESSION["id"]))) {
+            $is_logged_in = true;
+        } elseif ($type == 'teacher' && (isset($_SESSION["temail"]) || isset($_SESSION["id"]))) {
+            $is_logged_in = true;
         }
-        if ($type == 'student' && !isset($_SESSION["semail"])) {
-            $redirect = WEB_ROOT . "student/login.php";
-            echo "<script>window.location.href = '$redirect';</script>";
-            exit();
-        }
-        if ($type == 'teacher' && !isset($_SESSION["temail"])) {
-            $redirect = WEB_ROOT . "teacher/login.php";
+
+        if (!$is_logged_in) {
+            $redirect = WEB_ROOT . $type . "/login.php";
             echo "<script>window.location.href = '$redirect';</script>";
             exit();
         }

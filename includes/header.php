@@ -1,26 +1,22 @@
 <?php
- include_once(__DIR__ . '/connect.php');
-    if (!isset($_SESSION["email"])) {
-        $redirect_url = WEB_ROOT . 'admin/login.php';
-        echo "<script>window.location.href = '$redirect_url';</script>";
-        exit();
-    } else { 
-    ?>
+include_once(__DIR__ . '/connect.php');
+
+// Enhanced session check: ensuring the user is logged in as admin
+if (!isset($_SESSION["email"]) && !isset($_SESSION["id"])) {
+    // If not in a cloud environment, ensure pathing is consistent
+    $login_path = WEB_ROOT . 'admin/login.php';
+    echo "<script>window.location.href = '$login_path';</script>";
+    exit();
+} else { 
+?>
    
     <div id="main-wrapper">
         
-        <div class="header">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-              
+        <div class="header glass-effect">
+            <nav class="navbar top-navbar navbar-expand-md">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
-                        
-                         <?php
-             $sql_header_logo = "select * from manage_website"; 
-             $result_header_logo = $conn->query($sql_header_logo);
-             $row_header_logo = mysqli_fetch_array($result_header_logo);
-             ?>
-                        <b><img src="../assets/uploadImage/Logo/<?php echo $row_header_logo['logo'];?>" alt="homepage" class="dark-logo" style="width:100%;height:auto;"/></b>
+                        <span>EDWARDS ACADEMY</span>
                     </a>
                 </div>
                 

@@ -1,0 +1,259 @@
+/* 
+ * Premium Theme - Exam Hall Management
+ * A high-fidelity, modern design system featuring glassmorphism, 
+ * sleek dark mode, and elegant typography.
+ */
+
+:root {
+    --primary: #5c7cfa;
+    --primary-hover: #4c6ef5;
+    --bg-dark: #0f172a;
+    --bg-card: rgba(30, 41, 59, 0.7);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --sidebar-width: 260px;
+    --header-height: 70px;
+    --accent: #38bdf8;
+    --danger: #ef4444;
+    --success: #10b981;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+/* Glassmorphism Classes */
+.glass-effect {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    box-shadow: var(--glass-shadow);
+    border-radius: 12px;
+}
+
+/* Layout Overrides */
+#main-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    margin-left: var(--sidebar-width) !important;
+    padding: 2rem;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    transition: all 0.3s ease;
+}
+
+/* Header Redesign */
+.header {
+    height: var(--header-height);
+    background: rgba(15, 23, 42, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-glass);
+    position: fixed;
+    width: calc(100% - var(--sidebar-width));
+    left: var(--sidebar-width);
+    z-index: 1000;
+}
+
+.navbar {
+    padding: 0 2rem !important;
+    height: 100%;
+}
+
+.navbar-brand {
+    color: var(--text-main) !important;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.05rem;
+}
+
+/* Sidebar Redesign */
+.left-sidebar {
+    width: var(--sidebar-width) !important;
+    background: #0b1120 !important;
+    border-right: 1px solid var(--border-glass);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+#sidebarnav li a {
+    color: var(--text-muted) !important;
+    padding: 0.75rem 1.5rem !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    margin: 4px 12px;
+    transition: all 0.2s ease;
+}
+
+#sidebarnav li a:hover, #sidebarnav li a.active {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-main) !important;
+}
+
+#sidebarnav li a i {
+    font-size: 1.1rem;
+    color: var(--accent);
+}
+
+/* Card Redesign */
+.card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 16px !important;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(8px);
+}
+
+.card-title {
+    color: var(--text-main) !important;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+/* Table Redesign */
+.table {
+    color: var(--text-main) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+}
+
+.table thead th {
+    border: none !important;
+    color: var(--text-muted) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem;
+    padding: 1rem !important;
+}
+
+.table tbody tr {
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-2px);
+}
+
+.table td {
+    border: none !important;
+    padding: 1rem !important;
+    vertical-align: middle !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.6rem 1.5rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 14px 0 rgba(92, 124, 250, 0.39) !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(92, 124, 250, 0.45) !important;
+}
+
+/* Login Page Premium Styles */
+.premium-login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f172a;
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-login-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #0f172a, #1e1b4b, #111827);
+    z-index: 1;
+}
+
+.premium-login-bg::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.login-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+}
+
+.login-header h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(to right, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}

@@ -1,25 +1,26 @@
- <?php 
- include_once(__DIR__ . '/connect.php');
-  $sql = "select * from admin where id = '".$_SESSION["id"]."'";
+<?php 
+include_once(__DIR__ . '/connect.php');
+if (isset($_SESSION["id"])) {
+    $sql = "select * from admin where id = '".$_SESSION["id"]."'";
+    $result=$conn->query($sql);
+    $row1=mysqli_fetch_array($result);
+   
+    $q = "select * from tbl_permission_role where role_id='".$row1['group_id']."'";
+    $ress=$conn->query($q);
+   
+     $name = array();
+    while($row=mysqli_fetch_array($ress)){
+        $sql = "select * from tbl_permission where id = '".$row['permission_id']."'";
         $result=$conn->query($sql);
-        $row1=mysqli_fetch_array($result);
-       
-            $q = "select * from tbl_permission_role where role_id='".$row1['group_id']."'";
-            $ress=$conn->query($q);
-           
-             $name = array();
-            while($row=mysqli_fetch_array($ress)){
-            $sql = "select * from tbl_permission where id = '".$row['permission_id']."'";
-            $result=$conn->query($sql);
-            if(mysqli_num_rows($result) > 0){
-                $row2=mysqli_fetch_array($result);
-                array_push($name,$row2[1]);
-            }
-             }
-             $_SESSION['name']=$name;
-             $useroles=$_SESSION['name'];
-
- ?>
+        if(mysqli_num_rows($result) > 0){
+            $row2=mysqli_fetch_array($result);
+            array_push($name,$row2[1]);
+        }
+    }
+    $_SESSION['name']=$name;
+    $useroles=$_SESSION['name'];
+}
+?>
 
 
         <div class="left-sidebar">
