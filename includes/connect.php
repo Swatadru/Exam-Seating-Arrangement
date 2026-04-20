@@ -37,7 +37,12 @@ try {
 
 // Start Session if not started
 if (session_status() == PHP_SESSION_NONE) {
-    session_set_cookie_params(0, '/');
-    session_start();
+    session_start([
+        'cookie_lifetime' => 0,
+        'cookie_path' => '/',
+        'cookie_secure' => IS_CLOUD, // Only true on HTTPS (Render)
+        'cookie_httponly' => true,
+        'cookie_samesite' => 'Lax',
+    ]);
 }
 ?>

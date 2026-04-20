@@ -24,15 +24,18 @@ function hashPassword($password) {
 
 function checkLogin($type = 'admin') {
     if ($type == 'admin' && !isset($_SESSION["email"])) {
-        header("Location: login.php");
+        $redirect = WEB_ROOT . "admin/login.php";
+        echo "<script>window.location.href = '$redirect';</script>";
         exit();
     }
     if ($type == 'student' && !isset($_SESSION["semail"])) {
-        header("Location: login.php");
+        $redirect = WEB_ROOT . "student/login.php";
+        echo "<script>window.location.href = '$redirect';</script>";
         exit();
     }
     if ($type == 'teacher' && !isset($_SESSION["temail"])) {
-        header("Location: login.php");
+        $redirect = WEB_ROOT . "teacher/login.php";
+        echo "<script>window.location.href = '$redirect';</script>";
         exit();
     }
 }
