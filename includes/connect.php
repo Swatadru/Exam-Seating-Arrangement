@@ -7,6 +7,9 @@
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 
 // 2. Global Constants
+$is_https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || 
+            (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+
 if (!defined('IS_CLOUD')) {
     define('IS_CLOUD', (getenv('RENDER') == 'true' || getenv('IS_CLOUD') == 'true' || getenv('DB_HOST') != ''));
 }
@@ -20,7 +23,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_set_cookie_params([
         'lifetime' => 0,
         'path' => '/',
-        'secure' => (bool)IS_CLOUD,
+        'secure' => $is_https, 
         'httponly' => true,
         'samesite' => 'Lax'
     ]);

@@ -1,139 +1,115 @@
-<?php include('../includes/head.php');?>
+<?php
+include('../includes/connect.php');
+include('../includes/functions.php');
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo $row_login['title'];?> - Teacher Login</title>
-        <link rel="stylesheet" href="../assets/style1.css">
-      </head>
+if(isset($_POST['btn_login'])) {
+    $unm = $_POST['email'];
+    $password = $_POST['password'];
+    $pass = hashPassword($password);
 
-      <body>
-        <div class='intro'>
-            <h1 class='logo-header'>
-                <span class='logo'>WELCOME</span>
-                <span class='logo'>TO </span>
-                <span class='logo'>TEACHER</span>
-                <span class='logo'>WEBSITE</span>                
-            </h1>
-        </div>
-        <script src="../assets/app.js"></script>
-      </body>
-</html>
-
-<link rel="stylesheet" href="../assets/popup_style.css">
-
-   <?php
-  include('../includes/connect.php');
-  include('../includes/functions.php');
-if(isset($_POST['btn_login']))
-{
-  $unm = $_POST['email'];
-  $password = $_POST['password'];
-  $pass = hashPassword($password);
-
-  $stmt = $conn->prepare("SELECT * FROM tbl_teacher WHERE temail = ? AND password = ?");
-  $stmt->bind_param("ss", $unm, $pass);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $row = $result->fetch_assoc();
-    
-  if($row) {
     if (!verifyCSRFToken($_POST['csrf_token'])) {
-        die("CSRF token validation failed. Possible attack detected.");
+        die("CSRF token validation failed.");
     }
-         $_SESSION["id"] = $row['id'];
-         $_SESSION["password"] = $row['password'];
-         $_SESSION["temail"] = $row['temail'];
-         $_SESSION["fname"] = $row['tfname'];
-         $_SESSION["lname"] = $row['tlname'];
-         
-         ?>
-         <div class="popup popup--icon -success js_success-popup popup--visible">
-  <div class="popup__background"></div>
-  <div class="popup__content">
-    <h3 class="popup__content__title">
-      Success 
-    </h1>
-    <p>Login Successfully</p>
-    <p>
-     <?php echo "<script>setTimeout(\"location.href = 'dashboard.php';\",1500);</script>"; ?>
-    </p>
-  </div>
-</div>
-  
-     <?php
-    }
-    else {?>
-     <div class="popup popup--icon -error js_error-popup popup--visible">
-  <div class="popup__background"></div>
-  <div class="popup__content">
-    <h3 class="popup__content__title">
-      Error 
-    </h1>
-    <p>Invalid Email or Password</p>
-    <p>
-      <a href="login.php"><button class="button button--error" data-for="js_error-popup">Close</button></a>
-    </p>
-  </div>
-</div>
-       
-        <?php
-       
-         }
-    
-    }
-?>
 
-    <div id="main-wrapper">
-        <div class="unix-login">
-             <?php
-             $sql_login = "select * from manage_website"; 
-             $result_login = $conn->query($sql_login);
-             $row_login = mysqli_fetch_array($result_login);
-             ?>
-            <div class="container-fluid"  style="background-image: url('../assets/uploadImage/Logo/<?php echo $row_login['background_login_image'];?>'); background-size: cover;">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4">
-                        <div class="login-content card">
-                            <div class="login-form">
-                                <center><img src="../assets/uploadImage/Logo/logo 4.jpg" style="width:80%;"></center><br>
-                                <form method="POST">
-                                    <div class="form-group">
-                                        <label>Email address</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Password" required="">
-                                    </div>
-                                    <button type="submit" name="btn_login" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
-                                    <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
-                                  
-                                </form>
-                                <div class="register-link m-t-15 text-center">
-                                    <p><a href="../admin/login.php"> Admin Login</a> | <a href="../student/login.php"> Student Login</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    $stmt = $conn->prepare("SELECT * FROM tbl_teacher WHERE temail = ? AND password = ?");
+    $stmt->bind_param("ss", $unm, $pass);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    
+    if($row) {
+        $_SESSION["id"] = $row['id'];
+        $_SESSION["temail"] = $row['temail'];
+        $_SESSION["fname"] = $row['tfname'];
+        $_SESSION["lname"] = $row['tlname'];
+        ?>
+        <link rel="stylesheet" href="../assets/popup_style.css">
+        <div class="popup popup--icon -success js_success-popup popup--visible">
+            <div class="popup__background"></div>
+            <div class="popup__content">
+                <h3 class="popup__content__title">Success</h3>
+                <p>Login Successful</p>
+                <p>
+                    <script>setTimeout(function(){ location.href = 'dashboard.php'; }, 1500);</script>
+                </p>
             </div>
         </div>
-
-    </div>
-	
+        <?php
+    } else {
+        ?>
+        <link rel="stylesheet" href="../assets/popup_style.css">
+        <div class="popup popup--icon -error js_error-popup popup--visible">
+            <div class="popup__background"></div>
+            <div class="popup__content">
+                <h3 class="popup__content__title">Error</h3>
+                <p>Invalid Email or Password</p>
+                <p>
+                    <a href="login.php"><button class="button button--error">Close</button></a>
+                </p>
+            </div>
+        </div>
+        <?php
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    $sql_login = "select * from manage_website"; 
+    $result_login = $conn->query($sql_login);
+    $row_login = mysqli_fetch_array($result_login);
+    ?>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $row_login['title'];?> - Teacher Login</title>
     
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Dependencies -->
+    <link href="../assets/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/premium_login.css" rel="stylesheet">
+</head>
+<body class="premium-login-body">
+    <div class="login-background-overlay" style="background-image: url('../assets/uploadImage/Logo/<?php echo $row_login['background_login_image'];?>');"></div>
+    
+    <div class="premium-login-container">
+        <div class="glass-card">
+            <div class="login-header">
+                <h2>Teacher Portal</h2>
+                <p>Sign in to manage your exams and students</p>
+            </div>
+
+            <form method="POST">
+                <div class="form-group-premium">
+                    <label>Staff Email</label>
+                    <input type="email" name="email" class="form-input-premium" placeholder="teacher@school.edu" required="">
+                </div>
+                
+                <div class="form-group-premium">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-input-premium" placeholder="••••••••" required="">
+                </div>
+                
+                <button type="submit" name="btn_login" class="btn-premium">Sign In</button>
+                <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
+            </form>
+            
+            <div class="links-container">
+                <a href="../admin/login.php">Admin Login</a>
+                <span>|</span>
+                <a href="../student/login.php">Student Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="../assets/js/lib/jquery/jquery.min.js"></script>
     <script src="../assets/js/lib/bootstrap/js/popper.min.js"></script>
     <script src="../assets/js/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/jquery.slimscroll.js"></script>
-    <script src="../assets/js/sidebarmenu.js"></script>
-    <script src="../assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="../assets/js/custom.min.js"></script>
+</body>
+</html>
 
 </body>
 
