@@ -1,7 +1,9 @@
 <?php
 include('../includes/connect.php');
 include('../includes/functions.php');
-
+?>
+<link rel="stylesheet" href="../assets/popup_style.css">
+<?php
 if(isset($_POST['btn_login']))
 {
     $email = $_POST['email'];
@@ -25,10 +27,35 @@ if(isset($_POST['btn_login']))
         $_SESSION["lname"] = $row['lname'];
         $_SESSION["image"] = $row['image'];
         
-        header("Location: dashboard.php");
-        exit();
+        ?>
+        <div class="popup popup--icon -success js_success-popup popup--visible">
+          <div class="popup__background"></div>
+          <div class="popup__content">
+            <h3 class="popup__content__title">Success</h3>
+            <p>Login Successful</p>
+            <p>
+              <script>
+                setTimeout(function() {
+                  window.location.href = "<?php echo WEB_ROOT; ?>admin/dashboard.php";
+                }, 1500);
+              </script>
+            </p>
+          </div>
+        </div>
+        <?php
     } else {
-        $error = "Invalid Email or Password";
+        ?>
+        <div class="popup popup--icon -error js_error-popup popup--visible">
+          <div class="popup__background"></div>
+          <div class="popup__content">
+            <h3 class="popup__content__title">Error</h3>
+            <p>Invalid Email or Password</p>
+            <p>
+              <a href="login.php"><button class="button button--error" data-for="js_error-popup">Close</button></a>
+            </p>
+          </div>
+        </div>
+        <?php
     }
 }
 ?>
