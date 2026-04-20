@@ -1,13 +1,10 @@
 <?php
  include_once(__DIR__ . '/connect.php');
-    if(!isset($_SESSION["temail"])){
-    ?>
-    <script>
-    window.location="login.php";
-    </script>
-    <?php
-    
-} else { 
+    if (!isset($_SESSION["temail"])) {
+        $redirect_url = WEB_ROOT . 'teacher/login.php';
+        echo "<script>window.location.href = '$redirect_url';</script>";
+        exit();
+    } else { 
     ?>
    
     <div id="main-wrapper">
