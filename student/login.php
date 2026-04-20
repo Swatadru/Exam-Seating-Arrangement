@@ -1,4 +1,3 @@
-<?php session_start();?>
 <?php include('../includes/head.php');?>
 
 <!DOCTYPE html>

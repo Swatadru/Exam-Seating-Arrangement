@@ -1,5 +1,5 @@
 <?php  
-session_start(); 
+include_once(__DIR__ . '/../includes/connect.php'); 
 $f=0;
 if(isset($_SESSION["semail"]))
 {

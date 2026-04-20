@@ -1,6 +1,6 @@
 <?php
 include '../includes/connect.php';
-session_start();
+
 
 $sql = "DELETE FROM `room` WHERE id='".$_GET["id"]."'";
 $res = $conn->query($sql) ;
