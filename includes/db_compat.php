@@ -90,8 +90,10 @@ class SQLiteStatement {
 
     public function bind_param($types, ...$vars) {
         // mysqli uses types like "ssi", PDO uses positional ? starting at 1
-        foreach ($vars as $i => &$var) {
-            $this->stmt->bindParam($i + 1, $var);
+        foreach ($vars as $i => $var) {
+            // Use bindValue as mysqli's behavior for passing values matches bindValue better in this wrapper context
+            // especially when variables are not explicitly passed by reference into ...$vars
+            $this->stmt->bindValue($i + 1, $var);
         }
         return true;
     }
@@ -100,7 +102,10 @@ class SQLiteStatement {
         try {
             $res = $this->stmt->execute();
             if ($res) {
-                $this->conn->insert_id = $this->conn->lastInsertId();
+                $lastId = $this->conn->lastInsertId();
+                if ($lastId) {
+                    $this->conn->insert_id = $lastId;
+                }
             }
             return $res;
         } catch (PDOException $e) {
