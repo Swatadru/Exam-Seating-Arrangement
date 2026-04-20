@@ -61,50 +61,57 @@ if(isset($_POST['btn_login'])) {
     $row_login = mysqli_fetch_array($result_login);
     ?>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $row_login['title'];?> - Teacher Login</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="../assets/style1.css">
     <link href="../assets/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/premium_login.css" rel="stylesheet">
+    <link href="../assets/css/helper.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
 </head>
-<body class="premium-login-body">
-    <div class="login-background-overlay" style="background-image: url('../assets/uploadImage/Logo/<?php echo $row_login['background_login_image'];?>');"></div>
+<body>
+    <div class='intro'>
+        <h1 class='logo-header'>
+            <span class='logo'>WELCOME</span>
+            <span class='logo'>TO </span>
+            <span class='logo'>TEACHER</span>
+            <span class='logo'>WEBSITE</span>                
+        </h1>
+    </div>
     
-    <div class="premium-login-container">
-        <div class="glass-card">
-            <div class="login-header">
-                <h2>Teacher Portal</h2>
-                <p>Sign in to manage your exams and students</p>
-            </div>
-
-            <form method="POST">
-                <div class="form-group-premium">
-                    <label>Staff Email</label>
-                    <input type="email" name="email" class="form-input-premium" placeholder="teacher@school.edu" required="">
+    <div id="main-wrapper">
+        <div class="unix-login">
+            <div class="container-fluid" style="background-image: url('../assets/uploadImage/Logo/<?php echo $row_login['background_login_image'];?>'); background-size: cover;">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <div class="login-content card">
+                            <div class="login-form">
+                                <center><img src="../assets/uploadImage/Logo/logo 4.jpg" style="width:80%;"></center><br>
+                                <form method="POST">
+                                    <div class="form-group">
+                                        <label>Email address</label>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                                    </div>
+                                    <button type="submit" name="btn_login" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                                    <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
+                                </form>
+                                <div class="register-link m-t-15 text-center">
+                                    <p><a href="../admin/login.php"> Admin Login</a> | <a href="../student/login.php"> Student Login</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="form-group-premium">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-input-premium" placeholder="••••••••" required="">
-                </div>
-                
-                <button type="submit" name="btn_login" class="btn-premium">Sign In</button>
-                <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
-            </form>
-            
-            <div class="links-container">
-                <a href="../admin/login.php">Admin Login</a>
-                <span>|</span>
-                <a href="../student/login.php">Student Portal</a>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <script src="../assets/app.js"></script>
     <script src="../assets/js/lib/jquery/jquery.min.js"></script>
     <script src="../assets/js/lib/bootstrap/js/popper.min.js"></script>
     <script src="../assets/js/lib/bootstrap/js/bootstrap.min.js"></script>

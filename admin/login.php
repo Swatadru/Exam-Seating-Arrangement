@@ -71,54 +71,42 @@ if(isset($_POST['btn_login']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $row_head_title['title'];?> - Admin Login</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Standard CSS -->
     <link href="../assets/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/helper.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
-    
-    <!-- Premium Login CSS -->
-    <link href="../assets/css/premium_login.css" rel="stylesheet">
 </head>
-<body class="premium-login-body">
-    <div class="login-background-overlay" style="background-image: url('../assets/uploadImage/Logo/<?php echo $row_head_title['background_login_image'];?>');"></div>
-    
-    <div class="premium-login-container">
-        <div class="glass-card">
-            <div class="login-header">
-                <h2>Admin Login</h2>
-                <p>Welcome back! Please enter your details.</p>
-            </div>
-
-            <?php if(isset($error)) { echo '<div class="alert-premium">'.$error.'</div>'; } ?>
-            
-            <form method="POST">
-                <div class="form-group-premium">
-                    <label>Email Address</label>
-                    <input type="email" name="email" class="form-input-premium" placeholder="name@company.com" required="">
+<body class="fix-header fix-sidebar">
+    <div id="main-wrapper">
+        <div class="unix-login">
+            <div class="container-fluid" style="background-image: url('../assets/uploadImage/Logo/<?php echo $row_head_title['background_login_image'];?>'); background-size: cover;">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <div class="login-content card">
+                            <div class="login-form">
+                                <center><h4>Admin Login</h4></center><br>
+                                <?php if(isset($error)) { echo '<div class="alert alert-danger">'.$error.'</div>'; } ?>
+                                <form method="POST">
+                                    <div class="form-group">
+                                        <label>Email address</label>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                                    </div>
+                                    <button type="submit" name="btn_login" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                                    <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
+                                </form>
+                                <div class="register-link m-t-15 text-center">
+                                    <p><a href="../student/login.php"> Student Login</a> | <a href="../teacher/login.php"> Teacher Login</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="form-group-premium">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-input-premium" placeholder="••••••••" required="">
-                </div>
-                
-                <button type="submit" name="btn_login" class="btn-premium">Sign In</button>
-                <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
-            </form>
-            
-            <div class="links-container">
-                <a href="../student/login.php">Student Portal</a>
-                <span>|</span>
-                <a href="../teacher/login.php">Teacher Portal</a>
             </div>
         </div>
     </div>
-
-    <!-- Scripts -->
     <script src="../assets/js/lib/jquery/jquery.min.js"></script>
     <script src="../assets/js/lib/bootstrap/js/popper.min.js"></script>
     <script src="../assets/js/lib/bootstrap/js/bootstrap.min.js"></script>
