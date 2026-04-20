@@ -17,13 +17,14 @@ if (!defined('WEB_ROOT')) {
 
 // 3. Unified Session Initialization (must be before any output)
 if (session_status() == PHP_SESSION_NONE) {
-    session_start([
-        'cookie_lifetime' => 0,
-        'cookie_path' => '/',
-        'cookie_secure' => IS_CLOUD, 
-        'cookie_httponly' => true,
-        'cookie_samesite' => 'Lax',
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path' => '/',
+        'secure' => (bool)IS_CLOUD,
+        'httponly' => true,
+        'samesite' => 'Lax'
     ]);
+    session_start();
 }
 
 // 4. Load Dependencies
