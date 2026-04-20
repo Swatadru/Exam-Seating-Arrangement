@@ -4,14 +4,24 @@
  */
 
 // 1. Error reporting (must be first)
-error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // 2. Global Constants
-$is_https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || 
-            (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
-
 if (!defined('IS_CLOUD')) {
-    define('IS_CLOUD', (getenv('RENDER') == 'true' || getenv('IS_CLOUD') == 'true' || getenv('DB_HOST') != ''));
+    // Detect Render / Cloud environments via common env vars
+    $is_cloud = (getenv('RENDER') == 'true' || getenv('IS_CLOUD') == 'true' || getenv('DB_HOST') != '');
+    define('IS_CLOUD', $is_cloud);
+}
+
+// Proxy-aware HTTPS detection
+if (!defined('IS_HTTPS')) {
+    $is_https = (
+        (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
+        $_SERVER['SERVER_PORT'] == 443 ||
+        (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+    );
+    define('IS_HTTPS', $is_https);
 }
 
 if (!defined('WEB_ROOT')) {
@@ -20,14 +30,13 @@ if (!defined('WEB_ROOT')) {
 
 // 3. Unified Session Initialization (must be before any output)
 if (session_status() == PHP_SESSION_NONE) {
-    session_set_cookie_params([
-        'lifetime' => 0,
-        'path' => '/',
-        'secure' => $is_https, 
-        'httponly' => true,
-        'samesite' => 'Lax'
+    session_start([
+        'cookie_lifetime' => 0,
+        'cookie_path' => '/',
+        'cookie_secure' => IS_HTTPS, // Use detected HTTPS state (proxy-aware)
+        'cookie_httponly' => true,
+        'cookie_samesite' => 'Lax',
     ]);
-    session_start();
 }
 
 // 4. Load Dependencies

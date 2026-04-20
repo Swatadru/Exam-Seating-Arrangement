@@ -115,7 +115,3 @@ if(isset($_POST['btn_login'])) {
     <script src="../assets/js/lib/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-</body>
-
-</html>

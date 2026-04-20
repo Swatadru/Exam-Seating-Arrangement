@@ -24,9 +24,11 @@ function init_sqlite($sql_file, $sqlite_file) {
     $primary_keys = [];
     preg_match_all('/ALTER TABLE `(\w+)`.*?ADD PRIMARY KEY \(`(\w+)`\)/is', $original_sql, $pk_matches);
     for ($i = 0; $i < count($pk_matches[0]); $i++) {
+        $table_name = $pk_matches[1][$i];
+        $col_name = $pk_matches[2][$i];
         // Only add if not already in auto_increments (since AI implies PK in SQLite)
-        if (!isset($auto_increments[$ai_matches[1][$i]]) || $auto_increments[$ai_matches[1][$i]] != $pk_matches[2][$i]) {
-            $primary_keys[$pk_matches[1][$i]] = $pk_matches[2][$i];
+        if (!isset($auto_increments[$table_name]) || $auto_increments[$table_name] != $col_name) {
+            $primary_keys[$table_name] = $col_name;
         }
     }
 
