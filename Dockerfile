@@ -17,16 +17,10 @@ ENV PORT=80
 # Copy project files to Apache web root
 COPY . /var/www/html/
 
-# Set working directory
-WORKDIR /var/www/html/
-
-# Create data directory for persistent SQLite storage
-RUN mkdir -p /var/www/html/data
-
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Fix permissions for the web server and the data volume
+# Fix permissions for the web server
 RUN chown -R www-data:www-data /var/www/html/ && chmod -R 775 /var/www/html/
 
 # Expose port (Render dynamic port)

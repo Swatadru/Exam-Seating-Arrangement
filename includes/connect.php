@@ -12,7 +12,7 @@ if (!defined('IS_CLOUD')) {
 }
 
 // Database configuration
-$sqlite_path = IS_CLOUD ? '/var/www/html/data/database.sqlite' : __DIR__ . '/../database.sqlite';
+$sqlite_path = __DIR__ . '/../database.sqlite';
 $sql_source = __DIR__ . '/../DB/exam_hall.sql';
 
 // Project root for absolute pathing
