@@ -115,91 +115,84 @@ body {
     visibility: visible !important;
 }
 
-/* Card & Grid Formatting */
+/* Force Sidebar Labels to be Visible */
+.hide-menu {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+body.mini-sidebar .hide-menu {
+    display: none !important; /* Keep it hidden only if we WANT mini sidebar */
+}
+
+/* Redefine Sidebar and Labels for Absolute Formatting */
+.sidebar-nav ul li a span {
+    display: inline-block !important;
+}
+
+/* Kill the Legacy Green Header Block */
+.navbar-header, .top-navbar .navbar-header {
+    background: transparent !important;
+    border: none !important;
+    width: 280px !important;
+    padding-left: 20px !important;
+}
+
+.header {
+    background: rgba(15, 23, 42, 0.9) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix the Page Wrapper Gap & Container Alignment */
+.page-wrapper {
+    margin-left: 280px !important;
+    padding-top: 90px !important; /* Space for fixed header */
+    background: transparent !important;
+}
+
+.container-fluid {
+    padding: 2rem !important;
+}
+
+/* Redesign Dashboard Grid Cards */
 .card {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-glass) !important;
-    border-radius: 16px !important;
-    padding: 1.5rem !important;
-    margin-bottom: 24px !important;
-    backdrop-filter: blur(8px) !important;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+    background: rgba(30, 41, 59, 0.5) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-.card-body {
-    padding: 0 !important;
+.card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2) !important;
 }
 
-.card-title {
-    color: var(--text-main) !important;
-    font-family: 'Outfit', sans-serif !important;
-    font-size: 1.2rem !important;
-    margin-bottom: 1rem !important;
-}
-
-/* Dashboard Stat Cards Re-grid */
-.widget-stat-card {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.widget-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    font-size: 24px;
-}
-
-.stat-info h2 {
-    font-size: 2rem !important;
-    font-weight: 700 !important;
-    margin: 0 !important;
-    color: #fff !important;
-}
-
-.stat-info p {
+/* Footer Stabilization */
+.footer {
+    background: transparent !important;
+    border-top: 1px solid var(--border-glass) !important;
     color: var(--text-muted) !important;
-    margin: 0 !important;
-    font-size: 0.9rem !important;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
+    padding: 1rem !important;
+    position: relative !important; /* Stop floating over content */
+    width: 100% !important;
+    z-index: 1 !important;
 }
 
-/* Table Formatting */
-.table {
-    color: var(--text-main) !important;
+.footer marquee {
+    display: none !important; /* Remove distracting marquee */
 }
 
-.table thead th {
-    background: rgba(255,255,255,0.02) !important;
-    border-bottom: 1px solid var(--border-glass) !important;
+/* Table Formatting for Premium Feel */
+.table-responsive {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+#myTable_wrapper .dataTables_length, 
+#myTable_wrapper .dataTables_filter,
+#myTable_wrapper .dataTables_info,
+#myTable_wrapper .dataTables_paginate {
     color: var(--text-muted) !important;
-    text-transform: uppercase !important;
-    font-size: 0.8rem !important;
-    padding: 15px !important;
-}
-
-.table td {
-    padding: 15px !important;
-    border-top: 1px solid rgba(255,255,255,0.05) !important;
-    vertical-align: middle !important;
-}
-
-/* Glass Buttons */
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
-}
-
-/* Animations */
-.glass-effect { border-radius: 16px !important; }
-
-/* Responsive tweaks */
-@media (max-width: 1024px) {
-    .page-wrapper { margin-left: 0 !important; width: 100% !important; }
-    .header, .left-sidebar { display: none !important; }
+    margin: 1rem 0;
 }
