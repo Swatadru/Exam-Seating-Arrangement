@@ -27,15 +27,15 @@ $row_head_title = mysqli_fetch_array($result_head_title);
     
     <link href="../assets/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Premium Theme Styles -->
-    <link href="../assets/css/premium_theme.css" rel="stylesheet">
-    
     <link href="../assets/css/helper.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/lib/html5-editor/bootstrap-wysihtml5.css" />
     <link href="../assets/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
     <link href="../assets/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
     <link href="../assets/css/lib/sweetalert/sweetalert.css" rel="stylesheet">
+    
+    <!-- Final Theme Override (Highest Priority) -->
+    <link href="../assets/css/premium_theme.css" rel="stylesheet">
 </head>
 
 <body class="fix-header fix-sidebar">

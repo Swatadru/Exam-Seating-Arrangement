@@ -1,9 +1,3 @@
-/* 
- * Premium Theme - Exam Hall Management
- * A high-fidelity, modern design system featuring glassmorphism, 
- * sleek dark mode, and elegant typography.
- */
-
 :root {
     --primary: #5c7cfa;
     --primary-hover: #4c6ef5;
@@ -13,7 +7,7 @@
     --text-muted: #94a3b8;
     --border-glass: rgba(255, 255, 255, 0.1);
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --sidebar-width: 260px;
+    --sidebar-width: 280px;
     --header-height: 70px;
     --accent: #38bdf8;
     --danger: #ef4444;
@@ -22,238 +16,190 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/* Force Global Reset & Priority */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-}
-
-/* Glassmorphism Classes */
-.glass-effect {
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-glass);
-    box-shadow: var(--glass-shadow);
-    border-radius: 12px;
+    font-family: 'Inter', sans-serif !important;
+    background-color: var(--bg-dark) !important;
+    background: radial-gradient(circle at top right, #1e293b, #0f172a) fixed !important;
+    color: var(--text-main) !important;
+    margin: 0 !important;
 }
 
 /* Layout Overrides */
 #main-wrapper {
-    display: flex;
-    min-height: 100vh;
+    background: transparent !important;
 }
 
 .page-wrapper {
     margin-left: var(--sidebar-width) !important;
-    padding: 2rem;
-    width: 100%;
-    min-height: 100vh;
-    background: radial-gradient(circle at top right, #1e293b, #0f172a);
-    transition: all 0.3s ease;
+    padding: 2rem !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    min-height: 100vh !important;
+    background: transparent !important;
 }
 
-/* Header Redesign */
+.container-fluid {
+    padding: 0 !important;
+    max-width: 1400px;
+}
+
+/* Header & Navbar Cleanup */
 .header {
-    height: var(--header-height);
+    height: var(--header-height) !important;
     background: rgba(15, 23, 42, 0.8) !important;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-glass);
-    position: fixed;
-    width: calc(100% - var(--sidebar-width));
-    left: var(--sidebar-width);
-    z-index: 1000;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid var(--border-glass) !important;
+    position: fixed !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    left: var(--sidebar-width) !important;
+    z-index: 1000 !important;
 }
 
 .navbar {
+    background: transparent !important;
+    box-shadow: none !important;
     padding: 0 2rem !important;
-    height: 100%;
 }
 
-.navbar-brand {
+.navbar-header {
+    background: transparent !important;
+    border: none !important;
+    width: auto !important;
+}
+
+.navbar-brand span {
     color: var(--text-main) !important;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.05rem;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
 }
 
-/* Sidebar Redesign */
+/* Sidebar Overhaul */
 .left-sidebar {
     width: var(--sidebar-width) !important;
     background: #0b1120 !important;
-    border-right: 1px solid var(--border-glass);
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    overflow-y: auto;
-    transition: all 0.3s ease;
+    border-right: 1px solid var(--border-glass) !important;
+    position: fixed !important;
+    height: 100vh !important;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.2) !important;
+}
+
+.sidebar-nav {
+    padding: 20px 0 !important;
 }
 
 #sidebarnav li a {
     color: var(--text-muted) !important;
-    padding: 0.75rem 1.5rem !important;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-radius: 8px;
-    margin: 4px 12px;
-    transition: all 0.2s ease;
+    padding: 12px 24px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 #sidebarnav li a:hover, #sidebarnav li a.active {
-    background: rgba(255, 255, 255, 0.05) !important;
     color: var(--text-main) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
 }
 
 #sidebarnav li a i {
-    font-size: 1.1rem;
-    color: var(--accent);
+    width: 30px !important;
+    font-size: 20px !important;
+    color: var(--accent) !important;
+    margin-right: 15px !important;
 }
 
-/* Card Redesign */
+.hide-menu {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Card & Grid Formatting */
 .card {
     background: var(--bg-card) !important;
     border: 1px solid var(--border-glass) !important;
     border-radius: 16px !important;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    backdrop-filter: blur(8px);
+    padding: 1.5rem !important;
+    margin-bottom: 24px !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-body {
+    padding: 0 !important;
 }
 
 .card-title {
     color: var(--text-main) !important;
-    margin-bottom: 1.5rem;
-    font-size: 1.25rem;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 1.2rem !important;
+    margin-bottom: 1rem !important;
 }
 
-/* Table Redesign */
-.table {
-    color: var(--text-main) !important;
-    border-collapse: separate !important;
-    border-spacing: 0 8px !important;
+/* Dashboard Stat Cards Re-grid */
+.widget-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.table thead th {
-    border: none !important;
-    color: var(--text-muted) !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.05rem;
-    padding: 1rem !important;
-}
-
-.table tbody tr {
-    background: rgba(255, 255, 255, 0.03);
-    transition: transform 0.2s ease;
-}
-
-.table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.06);
-    transform: translateY(-2px);
-}
-
-.table td {
-    border: none !important;
-    padding: 1rem !important;
-    vertical-align: middle !important;
-}
-
-/* Buttons */
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
-    border: none !important;
-    border-radius: 8px !important;
-    padding: 0.6rem 1.5rem !important;
-    font-weight: 600 !important;
-    box-shadow: 0 4px 14px 0 rgba(92, 124, 250, 0.39) !important;
-}
-
-.btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(92, 124, 250, 0.45) !important;
-}
-
-/* Login Page Premium Styles */
-.premium-login-container {
-    min-height: 100vh;
+.widget-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0f172a;
-    position: relative;
-    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 24px;
 }
 
-.premium-login-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #0f172a, #1e1b4b, #111827);
-    z-index: 1;
+.stat-info h2 {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    color: #fff !important;
 }
 
-.premium-login-bg::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
-    animation: rotate 20s linear infinite;
+.stat-info p {
+    color: var(--text-muted) !important;
+    margin: 0 !important;
+    font-size: 0.9rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+/* Table Formatting */
+.table {
+    color: var(--text-main) !important;
 }
 
-.login-card {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 420px;
-    padding: 2.5rem;
+.table thead th {
+    background: rgba(255,255,255,0.02) !important;
+    border-bottom: 1px solid var(--border-glass) !important;
+    color: var(--text-muted) !important;
+    text-transform: uppercase !important;
+    font-size: 0.8rem !important;
+    padding: 15px !important;
 }
 
-.login-header h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    background: linear-gradient(to right, #fff, var(--text-muted));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.table td {
+    padding: 15px !important;
+    border-top: 1px solid rgba(255,255,255,0.05) !important;
+    vertical-align: middle !important;
 }
 
-/* Scrollbar Customization */
-::-webkit-scrollbar {
-    width: 8px;
+/* Glass Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
 }
-::-webkit-scrollbar-track {
-    background: var(--bg-dark);
-}
-::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #475569;
+
+/* Animations */
+.glass-effect { border-radius: 16px !important; }
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+    .page-wrapper { margin-left: 0 !important; width: 100% !important; }
+    .header, .left-sidebar { display: none !important; }
 }

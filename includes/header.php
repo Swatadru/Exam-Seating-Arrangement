@@ -21,44 +21,29 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["id"])) {
                 </div>
                 
                 <div class="navbar-collapse">
-                    
                     <ul class="navbar-nav mr-auto mt-md-0">
-                        
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted  " href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        
+                        <li class="nav-item"> 
+                            <a class="nav-link nav-toggler hidden-md-up text-muted" href="javascript:void(0)"><i class="fa fa-bars"></i></a> 
+                        </li>
                     </ul>
                     
                     <ul class="navbar-nav my-lg-0">
-
-                      
-                        
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php 
                                 $sql = "select * from admin where id = '".$_SESSION["id"]."'";
                                 $query=$conn->query($sql);
-                                while($row=mysqli_fetch_array($query))
-                                    {
-                                     
-                                      extract($row);
-                                      $fname = $row['fname'];
-                                      $lname = $row['lname'];
-                                      $email = $row['email'];
-                                      $contact = $row['contact'];
-                                      $dob1 = $row['dob'];
-                                      $gender = $row['gender'];
-                                      $image = $row['image'];
-                                    }
-                                                                    ?>
-                                <img src="../assets/uploadImage/Profile/<?=$image?>" alt="user" class="profile-pic" /></a>
-                            <div class="dropdown-menu dropdown-menu-right animated zoomIn">
+                                $row=mysqli_fetch_array($query);
+                                extract($row);
+                                ?>
+                                <img src="../assets/uploadImage/Profile/<?=$image?>" alt="user" class="profile-pic" style="width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--border-glass);" />
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right animated zoomIn glass-effect" style="background: var(--bg-card) !important; border: 1px solid var(--border-glass) !important;">
                                 <ul class="dropdown-user">
-                                    <li><a href="profile.php"><i class="ti-user"></i> Profile</a></li>
-                                   
-                                     <li><a href="changepassword.php"><i class="ti-key"></i> Changed Password</a></li>
-                                  
-                                    <li><a href="logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="profile.php" class="text-white px-3 py-2 d-block"><i class="ti-user mr-2"></i> Profile</a></li>
+                                    <li><a href="changepassword.php" class="text-white px-3 py-2 d-block"><i class="ti-key mr-2"></i> Password</a></li>
+                                    <li><hr class="dropdown-divider opacity-10"></li>
+                                    <li><a href="logout.php" class="text-white px-3 py-2 d-block"><i class="fa fa-power-off mr-2"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -66,5 +51,4 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["id"])) {
                 </div>
             </nav>
         </div>
-       
         <?php } ?>

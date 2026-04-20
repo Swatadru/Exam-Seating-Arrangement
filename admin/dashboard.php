@@ -12,89 +12,73 @@
 ?>    
       
         <div class="page-wrapper">
-            
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Dashboard</h3> </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </div>
-            </div>
-            
             <div class="container-fluid">
-                
-        
-                      <div class="row">
-                    <div class="col-md-4">
-                        <div class="card bg-primary p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-bag f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <?php $sql="SELECT COUNT(*) FROM `tbl_teacher`";
-                                $res = $conn->query($sql);
-                                $row=mysqli_fetch_array($res);?> 
-                                    <h2 class="color-white"><?php echo $row[0];?></h2>
-                                    <p class="m-b-0">Total Teachers</p>
+                <div class="row pt-4">
+                    <div class="col-md-3">
+                        <div class="card bg-primary glass-effect">
+                            <div class="widget-stat-card">
+                                <div class="widget-icon" style="background: rgba(92, 124, 250, 0.2);"><i class="fa fa-user-circle"></i></div>
+                                <div class="stat-info">
+                                    <?php 
+                                    $sql="SELECT COUNT(*) FROM `tbl_teacher`";
+                                    $res = $conn->query($sql);
+                                    $row=mysqli_fetch_array($res);
+                                    ?> 
+                                    <h2><?php echo $row[0];?></h2>
+                                    <p>Teachers</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card bg-pink p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-comment f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                <?php $sql="SELECT COUNT(*) FROM `tbl_student`";
-                                $res = $conn->query($sql);
-                                $row=mysqli_fetch_array($res);?>
-                                    <h2 class="color-white"><?php echo $row[0];?></h2>
-                                    <p class="m-b-0">Total Student</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-danger p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-vector f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <?php $sql="SELECT COUNT(*) FROM `tbl_class`";
-                                $res = $conn->query($sql);
-                                $row=mysqli_fetch_array($res);?>
-                                    <h2 class="color-white"><?php echo $row[0];?></h2>
-                                    <p class="m-b-0">Total Class</p>
+                    <div class="col-md-3">
+                        <div class="card glass-effect">
+                            <div class="widget-stat-card">
+                                <div class="widget-icon" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;"><i class="fa fa-graduation-cap"></i></div>
+                                <div class="stat-info">
+                                    <?php 
+                                    $sql="SELECT COUNT(*) FROM `tbl_student`";
+                                    $res = $conn->query($sql);
+                                    $row=mysqli_fetch_array($res);
+                                    ?>
+                                    <h2 style="color: #ec4899;"><?php echo $row[0];?></h2>
+                                    <p>Students</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card bg-warning p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-location-pin f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                     <?php $sql="SELECT COUNT(*) FROM `tbl_subject`";
-                                $res = $conn->query($sql);
-                                $row=mysqli_fetch_array($res);?> 
-                                    <h2 class="color-white"><?php echo $row[0];?></h2>
-                                    <p class="m-b-0">Total Subject</p>
+                    <div class="col-md-3">
+                        <div class="card glass-effect">
+                            <div class="widget-stat-card">
+                                <div class="widget-icon" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;"><i class="fa fa-university"></i></div>
+                                <div class="stat-info">
+                                    <?php 
+                                    $sql="SELECT COUNT(*) FROM `tbl_class`";
+                                    $res = $conn->query($sql);
+                                    $row=mysqli_fetch_array($res);
+                                    ?>
+                                    <h2 style="color: #ef4444;"><?php echo $row[0];?></h2>
+                                    <p>Classes</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                
-            </div>
+                    <div class="col-md-3">
+                        <div class="card glass-effect">
+                            <div class="widget-stat-card">
+                                <div class="widget-icon" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;"><i class="fa fa-book"></i></div>
+                                <div class="stat-info">
+                                     <?php 
+                                     $sql="SELECT COUNT(*) FROM `tbl_subject`";
+                                     $res = $conn->query($sql);
+                                     $row=mysqli_fetch_array($res);
+                                     ?> 
+                                    <h2 style="color: #f59e0b;"><?php echo $row[0];?></h2>
+                                    <p>Subjects</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
              <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-primary">View Exam</h3> </div>
