@@ -4,8 +4,7 @@
         $redirect_url = WEB_ROOT . 'admin/login.php';
         echo "<script>window.location.href = '$redirect_url';</script>";
         exit();
-    }
-} else { 
+    } else { 
     ?>
    
     <div id="main-wrapper">
