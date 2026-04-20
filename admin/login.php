@@ -15,6 +15,9 @@ if(isset($_POST['btn_login']))
     $row = $result->fetch_assoc();
     
     if($row) {
+        if (!verifyCSRFToken($_POST['csrf_token'])) {
+            die("CSRF token validation failed. Possible attack detected.");
+        }
         $_SESSION["id"] = $row['id'];
         $_SESSION["username"] = $row['username'];
         $_SESSION["email"] = $row['email'];
@@ -65,6 +68,7 @@ if(isset($_POST['btn_login']))
                                         <input type="password" name="password" class="form-control" placeholder="Password" required="">
                                     </div>
                                     <button type="submit" name="btn_login" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                                    <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
                                 </form>
                                 <div class="register-link m-t-15 text-center">
                                     <p><a href="../student/login.php"> Student Login</a> | <a href="../teacher/login.php"> Teacher Login</a></p>

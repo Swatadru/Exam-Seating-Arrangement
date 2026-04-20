@@ -1,12 +1,10 @@
 <?php
  include_once(__DIR__ . '/connect.php');
-    if(!isset($_SESSION["email"])){
-    ?>
-    <script>
-    window.location="login.php";
-    </script>
-    <?php
-    
+    if (!isset($_SESSION["email"])) {
+        $redirect_url = WEB_ROOT . 'admin/login.php';
+        echo "<script>window.location.href = '$redirect_url';</script>";
+        exit();
+    }
 } else { 
     ?>
    

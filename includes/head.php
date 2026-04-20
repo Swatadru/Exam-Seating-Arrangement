@@ -1,3 +1,12 @@
+<?php
+include_once(__DIR__ . '/connect.php');
+if (!defined('WEB_ROOT')) {
+    define('WEB_ROOT', IS_CLOUD ? '/' : '/Exam-Seating-Arrangement-main/'); 
+}
+$sql_head_title = "select * from manage_website"; 
+$result_head_title = $conn->query($sql_head_title);
+$row_head_title = mysqli_fetch_array($result_head_title);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +17,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <?php
-             include(__DIR__ . '/connect.php');
-             $sql_head_title = "select * from manage_website"; 
-             $result_head_title = $conn->query($sql_head_title);
-             $row_head_title = mysqli_fetch_array($result_head_title);
-             ?>
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/uploadImage/Logo/<?php echo $row_head_title['background_login_image'];?>">
      
     <title><?php echo $row_head_title['title'];?></title>
